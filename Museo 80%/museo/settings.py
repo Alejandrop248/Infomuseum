@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-mz3lnc2@s85ow=yad0olrr3t4r=p7-^le68$nz@v0_xt_v9nva
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 MEDIA_URL = '/museo/piezas/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'museo/piezas/')
