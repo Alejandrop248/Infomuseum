@@ -1,0 +1,14 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block content %}
+    <!-- Contenido específico para editar piezas -->
+    <h1>Editar Pieza</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="file" name="imagenes" multiple>
+        <button type="submit">Guardar cambios</button>
+        <button type="reset" onclick="return confirm('¿Estás seguro de que quieres limpiar el formulario?');">Limpiar</button>
+    </form>
+    <a href="{% url 'vista_principal' %}" class="logout-btn">Regresar al menú principal</a>
+{% endblock %}

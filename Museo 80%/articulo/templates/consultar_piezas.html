@@ -1,0 +1,82 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <style>
+        .pieza {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #343a40; /* Cambiado a azul oscuro */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pieza-info {
+            margin-bottom: 10px;
+        }
+        
+        .pieza-info h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            color: #fff; /* Texto en blanco */
+        }
+        
+        .pieza-info p {
+            margin: 5px 0;
+            color: #dee2e6; /* Texto gris claro */
+        }
+        
+        .accion-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+        
+        .accion-btn:hover {
+            background-color: #0056b3;
+        }
+        
+        .logout-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #dc3545;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background-color: #bb2d3b;
+        }
+    </style>
+
+    <div class="container">
+        <h1 class="mt-5">Piezas</h1>
+        {% for pieza in piezas %}
+            <div class="pieza">
+                <div class="pieza-info">
+                    <h2>{{ pieza.Nombre_pieza }}</h2>
+                    <p><strong>Código de pieza:</strong> {{ pieza.Cod_pieza }}</p>
+                    <p><strong>Artesano:</strong> {{ pieza.Cod_artesano }}</p>
+                    <p><strong>Composición:</strong> {{ pieza.Composicion_pieza }}</p>
+                    <p><strong>Dimensiones:</strong> {{ pieza.Dimension_pieza }}</p>
+                    <p><strong>Soporte técnico:</strong> {{ pieza.Soporte_tecnico_pieza }}</p>
+                    <p><strong>Fecha de pieza:</strong> {{ pieza.Fecha_pieza }}</p>
+                    <p><strong>Marca de registro:</strong> {{ pieza.Marca_registro_pieza }}</p>
+                </div>
+                <a href="{% url 'editar_piezas' id_pieza=pieza.Cod_pieza %}" class="accion-btn">Editar</a>
+                <form method="post" action="{% url 'eliminar_piezas' id_pieza=pieza.Cod_pieza %}">
+                    {% csrf_token %}
+                    <button type="submit" class="accion-btn confirmar-eliminar" name="eliminar" value="{{ pieza.id }}">Eliminar</button>
+                </form>
+            </div>
+        {% endfor %}
+        <a href="{% url 'vista_principal' %}" class="logout-btn mt-3">Regresar al menú principal</a>
+    </div>
+{% endblock %}

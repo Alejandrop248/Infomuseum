@@ -1,0 +1,13 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Lista de Préstamos</h2>
+  <table>
+    <!-- Aquí puedes agregar los encabezados de tu tabla -->
+    {% for prestamo in prestamos %}
+      <tr>
+        <!-- Aquí puedes agregar los campos de tu modelo Prestamo -->
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

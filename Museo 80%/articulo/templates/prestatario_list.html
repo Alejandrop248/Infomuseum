@@ -1,0 +1,13 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Lista de Prestatarios</h2>
+  <table>
+    <!-- Aquí puedes agregar los encabezados de tu tabla -->
+    {% for prestatario in prestatarios %}
+      <tr>
+        <!-- Aquí puedes agregar los campos de tu modelo Prestatario -->
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
